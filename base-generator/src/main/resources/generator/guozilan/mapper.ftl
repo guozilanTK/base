@@ -1,7 +1,7 @@
 package ${package};
 
 import tk.guozilan.base.service.GzlMapper;
-import tk.guozilan.${projectName}.model.${tableClass.shortClassName};
+import ${packageName}.model.${tableClass.shortClassName};
 
 /**
  * @author guozilan

@@ -46,7 +46,11 @@
         </div>
     </form>
 </div>
-
+<#if tableClass.lowerCaseName?ends_with("y")>
+    <#assign names = tableClass.lowerCaseName[0..tableClass.lowerCaseName?length - 2] + 'ies'>
+<#else>
+    <#assign names = tableClass.lowerCaseName + 's'>
+</#if>
 <script src="${r"${pageContext.request.contextPath}"}/static/layui/layui.js"></script>
 <script>
     //一般直接写在一个js文件中
@@ -67,7 +71,7 @@
             var tableId = 'test';
             table.render({
                 elem: '#' + tableId,
-                url:'${r"${pageContext.request.contextPath}"}/${tableClass.lowerCaseName}s',
+                url:'${r"${pageContext.request.contextPath}"}/${names}',
                 cellMinWidth: 80 /*全局定义常规单元格的最小宽度，layui 2.2.1 新增*/,
                 page: true,
                 cols: [[
@@ -125,7 +129,7 @@
             return {
                 save: function(data, callback){
                     $.ajax({
-                        url: '${r"${pageContext.request.contextPath}"}/${tableClass.lowerCaseName}s/',
+                        url: '${r"${pageContext.request.contextPath}"}/${names}/',
                         data: data,
                         type: 'POST',
                         success: function(response) {
@@ -141,7 +145,7 @@
                 },
                 del: function(id, callback){
                     $.ajax({
-                        url: '${r"${pageContext.request.contextPath}"}/${tableClass.lowerCaseName}s/' + id,
+                        url: '${r"${pageContext.request.contextPath}"}/${names}/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if(response.success){

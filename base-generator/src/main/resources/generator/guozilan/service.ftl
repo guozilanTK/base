@@ -2,9 +2,9 @@ package ${package};
 
 import org.springframework.stereotype.Service;
 import tk.guozilan.base.service.AbstractService;
-import tk.guozilan.${projectName}.api.${tableClass.shortClassName}Service;
-import tk.guozilan.${projectName}.mapper.${tableClass.shortClassName}Mapper;
-import tk.guozilan.${projectName}.model.${tableClass.shortClassName};
+import ${packageName}.api.${tableClass.shortClassName}Service;
+import ${packageName}.mapper.${tableClass.shortClassName}Mapper;
+import ${packageName}.model.${tableClass.shortClassName};
 
 /**
  * @author guozilan

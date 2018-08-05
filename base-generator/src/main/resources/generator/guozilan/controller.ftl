@@ -10,22 +10,28 @@ import org.springframework.web.servlet.ModelAndView;
 import tk.guozilan.base.controller.AbstractController;
 import tk.guozilan.base.model.ListResponse;
 import tk.guozilan.base.model.ObjectResponse;
-import tk.guozilan.${projectName}.api.${tableClass.shortClassName}Service;
-import tk.guozilan.${projectName}.model.${tableClass.shortClassName};
+import ${packageName}.api.${tableClass.shortClassName}Service;
+import ${packageName}.model.${tableClass.shortClassName};
 
 /**
  * @author guozilan
  */
 @Controller
-@RequestMapping("${tableClass.lowerCaseName}s")
-public class ${tableClass.shortClassName}Controller {
+<#if tableClass.lowerCaseName?ends_with("y")>
+    <#assign names = tableClass.lowerCaseName[0..tableClass.lowerCaseName?length - 2] + 'ies'>
+<#else>
+    <#assign names = tableClass.lowerCaseName + 's'>
+</#if>
+@RequestMapping("${names}")
+public class ${tableClass.shortClassName}Controller extends AbstractController {
 
     @Autowired
     private ${tableClass.shortClassName}Service ${tableClass.lowerCaseName}Service;
 
+    <#assign lastIndex = packageName?last_index_of('.') + 1>
     @RequestMapping("/page")
     public ModelAndView main() {
-        return new ModelAndView("${projectName}/${tableClass.lowerCaseName}-main");
+        return new ModelAndView("${packageName[lastIndex..]}/${tableClass.lowerCaseName}-main");
     }
 
     @ResponseBody
