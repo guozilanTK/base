@@ -26,4 +26,22 @@
 
 默认选择的 id 生成方式，可以用于单体应用的生产环境（需要自己测试，本项目仅供参考，不承担任何责任）。
 
+**特别注意**
+
+在 vesta 代码中有如下 VestaService :
+
+```java
+@Component
+public class VestaService {
+
+```
+
+由于 vesta 用了 `@Component` 注解方式的配置，所以需要扫描 `tk.guozilan.service` 包名。或者你还可以在 Spring XML 中配置下面的 `<bean>`:
+
+```xml
+<bean class="tk.guozilan.service.VestaService"/>
+```
+
+
+
 
